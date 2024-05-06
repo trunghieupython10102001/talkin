@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from 'express';
+import cors from 'cors';
 import * as dotenv from 'dotenv'
 dotenv.config()
 import logger from './utils/logger';
@@ -9,6 +10,8 @@ dotenv.config()
 
 const app: Express = express();
 const port = 3333;
+
+app.use(cors());
 
 app.use(
   morgan('combined', {
