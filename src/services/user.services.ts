@@ -7,7 +7,10 @@ export const createUser = async (user: IUser) => {
   try {
     const saltRounds = 10;
     const hashedPassword = bcrypt.hashSync(user.password, saltRounds);
-    const createdUser = User.create({ ...user, password: hashedPassword });
+    const createdUser = await User.create({
+      ...user,
+      password: hashedPassword,
+    });
     return createdUser;
   } catch (err: any) {
     logger.error('Create user is failed', err);
